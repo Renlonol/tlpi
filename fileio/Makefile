@@ -1,34 +1,36 @@
 COMMOM_SRC_DIR = ../common
+COMMOM_OBJ_DIR = ../common/obj
 INCLUDE_DIR = ../common
 
-COMMON_SRC_FILES = $(wildcard $(COMMOM_SRC_DIR)/*.c)
-COMMOM_OBJS = $(patsubst %.c, %.o, $(COMMON_SRC_FILES))
+BIN_DIR = ./bin
+OBJ_DIR = ./obj
 
-ALL_TARGETS = copy
+COMMON_SRC_FILES = $(wildcard $(COMMOM_SRC_DIR)/*.c)
+COMMOM_OBJS = $(patsubst $(COMMOM_SRC_DIR)/%.c, $(COMMOM_OBJ_DIR)/%.o, $(COMMON_SRC_FILES))
+
+all: $(BIN_DIR)/copy
 
 
 CC = gcc
 CFLAGS = -g -Wall -I$(INCLUDE_DIR)
 
-copy: $(COMMOM_OBJS) copy.o
+$(BIN_DIR)/%: $(COMMOM_OBJS) $(OBJ_DIR)/%.o | $(BIN_DIR) $(OBJ_DIR)
 	@$(CC) $^ -o $@
 	@echo "==build $@ done"
 
-$(COMMOM_SRC_DIR)/%.o : $(COMMOM_SRC_DIR)/%.c
+$(COMMOM_OBJ_DIR)/%.o : $(COMMOM_SRC_DIR)/%.c | $(COMMOM_OBJ_DIR)
 	@echo "  cc $<"
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-%.o : %.c
+$(OBJ_DIR)/%.o : %.c
 	@echo "  cc $<"
 	@$(CC) $(CFLAGS) -c $< -o $@
 
+$(BIN_DIR) $(OBJ_DIR) $(COMMOM_OBJ_DIR):
+	@mkdir -p $@
 
 .PHONY : clean
 clean:
-	@rm -f $(ALL_TARGETS)
-	@rm -f $(COMMOM_SRC_DIR)/*.o
-	@rm -f ./*.o
+	@rm -fr $(BIN_DIR) $(OBJ_DIR)
+	@rm -fr $(COMMOM_OBJ_DIR)
 	@echo "clean fileio done"
-
-
-
