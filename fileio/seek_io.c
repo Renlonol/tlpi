@@ -15,7 +15,7 @@ int main(int argc, char* argv[])
     if (argc < 3 || strcmp(argv[1], "--help") ==0)
         usageErr("%s file {r<length>|R<length>|w<string>|S<offset>}...\n", argv[0]);
 
-    flags    = O_CREAT | O_WRONLY | O_TRUNC;
+    flags    = O_CREAT | O_RDWR;
     filePerms = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP |
                 S_IROTH | S_IWOTH;
     fd = open(argv[1], flags, filePerms);
@@ -27,7 +27,7 @@ int main(int argc, char* argv[])
         switch(argv[i][0]) {
             case 'r':
             case 'R':
-                len = getLong(argv[i][1], GN_ANY_BASE, argv[i]);
+                len = getLong(&argv[i][1], GN_ANY_BASE, argv[i]);
                 buf = malloc(len);
                 if (buf == NULL)
                     errExit("malloc");
@@ -44,7 +44,7 @@ int main(int argc, char* argv[])
                         if (argv[i][0] == 'r')
                             printf("%c", buf[j]);
                         else
-                            printf("%02x", buf[j]);
+                            printf("%02x ", buf[j]);
                     }
                     printf("\n");
                 }
@@ -58,7 +58,7 @@ int main(int argc, char* argv[])
                 printf("%s: wrote %ld bytes \n", argv[i], (long)numWrite);
                 break;
             case 's':
-                offset = getLong(argv[i][1], GN_ANY_BASE, argv[i]);
+                offset = getLong(&argv[i][1], GN_ANY_BASE, argv[i]);
                 if (lseek(fd, offset, SEEK_SET) == -1)
                     errExit("lseek");
                 printf("%s: seek ok\n", argv[i]);
