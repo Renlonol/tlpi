@@ -8,7 +8,7 @@ OBJ_DIR = ./obj
 COMMON_SRC_FILES = $(wildcard $(COMMOM_SRC_DIR)/*.c)
 COMMOM_OBJS = $(patsubst $(COMMOM_SRC_DIR)/%.c, $(COMMOM_OBJ_DIR)/%.o, $(COMMON_SRC_FILES))
 
-all: $(BIN_DIR)/copy $(BIN_DIR)/seek_io $(BIN_DIR)/tmpfile
+all: $(BIN_DIR)/copy $(BIN_DIR)/seek_io $(BIN_DIR)/tmpfile $(BIN_DIR)/redirect
 
 
 CC = gcc
