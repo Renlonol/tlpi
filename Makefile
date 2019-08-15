@@ -1,4 +1,7 @@
-all: help
+start: help
+
+all: fileio proc
+all_clean: fileio_clean proc_clean
 
 .PHONY: fileio
 fileio:
@@ -8,8 +11,13 @@ fileio:
 fileio_clean:
 	make -C fileio clean
 
+.PHONY: proc
+proc:
+	make -C proc
 
-
+.PHONY: proc_clean
+proc_clean:
+	make -C proc clean
 
 .PHONY: help
  help:
