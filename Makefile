@@ -1,7 +1,7 @@
 start: help
 
-all: fileio proc
-all_clean: fileio_clean proc_clean
+all: fileio proc memalloc
+all_clean: fileio_clean proc_clean memalloc_clean
 
 .PHONY: fileio
 fileio:
@@ -19,6 +19,14 @@ proc:
 proc_clean:
 	make -C proc clean
 
+.PHONY: memalloc
+memalloc:
+	make -C memalloc
+
+.PHONY: memalloc_clean
+memalloc_clean:
+	make -C memalloc clean
+
 .PHONY: help
  help:
 	@echo "================================= tlpi lean makefile ======================================================="
@@ -28,4 +36,5 @@ proc_clean:
 	@echo "  all | all_clean                           Build and clean all stuffs bins"
 	@echo "  fileio | fileio_clean                     Build and clean stuffs for fileio"
 	@echo "  proc | proc_clean                         Build and clean stuffs for proc"
+	@echo "  memalloc | memalloc_clean                 Build and clean stuffs for memalloc"
 	@echo "============================================================================================================"
