@@ -21,9 +21,11 @@ proc_clean:
 
 .PHONY: help
  help:
-	@echo "================================= tlpi lean makefile ========================================"
+	@echo "================================= tlpi lean makefile ======================================================="
 	@echo " Usage:"
 	@echo "  make [help] | [<target>]"
-	@echo "  help                       Help from this Makefile contains only help for generic targets"
-	@echo "  fileio                     all bins for fileio"
-	@echo "============================================================================================="
+	@echo "  help                                      Help from this Makefile contains only help for generic targets"
+	@echo "  all | all_clean                           Build and clean all stuffs bins"
+	@echo "  fileio | fileio_clean                     Build and clean stuffs for fileio"
+	@echo "  proc | proc_clean                         Build and clean stuffs for proc"
+	@echo "============================================================================================================"

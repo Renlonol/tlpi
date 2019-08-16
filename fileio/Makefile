@@ -16,12 +16,14 @@ CFLAGS = -g -Wall -I$(INCLUDE_DIR)
 
 $(BIN_DIR)/%: $(COMMOM_OBJS) $(OBJ_DIR)/%.o | $(BIN_DIR) $(OBJ_DIR)
 	@$(CC) $^ -o $@
-	@echo "==build $@ done"
+	@echo "== Build $@ done"
 
+.PRECIOUS: $(COMMOM_OBJ_DIR)/%.o
 $(COMMOM_OBJ_DIR)/%.o : $(COMMOM_SRC_DIR)/%.c | $(COMMOM_OBJ_DIR)
 	@echo "  cc $<"
 	@$(CC) $(CFLAGS) -c $< -o $@
 
+.PRECIOUS: $(OBJ_DIR)/%.o
 $(OBJ_DIR)/%.o : %.c
 	@echo "  cc $<"
 	@$(CC) $(CFLAGS) -c $< -o $@
@@ -33,4 +35,4 @@ $(BIN_DIR) $(OBJ_DIR) $(COMMOM_OBJ_DIR):
 clean:
 	@rm -fr $(BIN_DIR) $(OBJ_DIR)
 	@rm -fr $(COMMOM_OBJ_DIR)
-	@echo "clean fileio done"
+	@echo "Clean fileio done"
