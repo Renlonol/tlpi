@@ -8,7 +8,7 @@ OBJ_DIR = ./obj
 COMMON_SRC_FILES = $(wildcard $(COMMOM_SRC_DIR)/*.c)
 COMMOM_OBJS = $(patsubst $(COMMOM_SRC_DIR)/%.c, $(COMMOM_OBJ_DIR)/%.o, $(COMMON_SRC_FILES))
 
-all: $(BIN_DIR)/display_env $(BIN_DIR)/modify_env
+all: $(BIN_DIR)/display_env $(BIN_DIR)/modify_env $(BIN_DIR)/longjmp
 
 CC = gcc
 CFLAGS = -g -Wall -I$(INCLUDE_DIR)
