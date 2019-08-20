@@ -8,7 +8,7 @@ OBJ_DIR = ./obj
 COMMON_SRC_FILES = $(wildcard $(COMMOM_SRC_DIR)/*.c)
 COMMOM_OBJS = $(patsubst $(COMMOM_SRC_DIR)/%.c, $(COMMOM_OBJ_DIR)/%.o, $(COMMON_SRC_FILES))
 
-all: $(BIN_DIR)/calendar_time
+all: $(BIN_DIR)/calendar_time $(BIN_DIR)/process_time
 
 CC = gcc
 CFLAGS = -g -Wall -I$(INCLUDE_DIR)
