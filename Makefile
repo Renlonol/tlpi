@@ -1,8 +1,8 @@
 start: help
 
-all: fileio proc memalloc time syslim
+all: fileio proc memalloc time syslim sysinfo
 all_clean: fileio_clean proc_clean memalloc_clean time_clean \
-           syslim_clean
+           syslim_clean sysinfo_clean
 
 .PHONY: fileio
 fileio:
@@ -44,6 +44,14 @@ syslim:
 syslim_clean:
 	@make -C syslim clean
 
+.PHONY: sysinfo
+sysinfo:
+	@make -C sysinfo
+
+.PHONY: sysinfo_clean
+sysinfo_clean:
+	@make -C sysinfo clean
+
 
 .PHONY: help
  help:
@@ -57,4 +65,5 @@ syslim_clean:
 	@echo "  memalloc | memalloc_clean                 Build and clean stuffs for memalloc"
 	@echo "  time | time_clean                         Build and clean stuffs for time"
 	@echo "  syslim | syslim_clean                     Build and clean stuffs for time"
+	@echo "  sysinfo | sysinfo_clean                   Build and clean stuffs for time"
 	@echo "============================================================================================================"
