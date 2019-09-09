@@ -7,6 +7,7 @@ all_clean: fileio_clean proc_clean memalloc_clean time_clean \
 .PHONY: fileio
 fileio:
 	@make -C fileio
+	@echo "== Build $@ done"
 
 .PHONY: fileio_clean
 fileio_clean:
@@ -15,6 +16,7 @@ fileio_clean:
 .PHONY: proc
 proc:
 	@make -C proc
+	@echo "== Build $@ done"
 
 .PHONY: proc_clean
 proc_clean:
@@ -23,6 +25,7 @@ proc_clean:
 .PHONY: memalloc
 memalloc:
 	@make -C memalloc
+	@echo "== Build $@ done"
 
 .PHONY: memalloc_clean
 memalloc_clean:
@@ -31,6 +34,7 @@ memalloc_clean:
 .PHONY: time
 time:
 	@make -C time
+	@echo "== Build $@ done"
 
 .PHONY: time_clean
 time_clean:
@@ -39,6 +43,7 @@ time_clean:
 .PHONY: syslim
 syslim:
 	@make -C syslim
+	@echo "== Build $@ done"
 
 .PHONY: syslim_clean
 syslim_clean:
@@ -47,6 +52,7 @@ syslim_clean:
 .PHONY: sysinfo
 sysinfo:
 	@make -C sysinfo
+	@echo "== Build $@ done"
 
 .PHONY: sysinfo_clean
 sysinfo_clean:
@@ -55,6 +61,7 @@ sysinfo_clean:
 .PHONY: files
 files:
 	@make -C files
+	@echo "== Build $@ done"
 
 .PHONY: files_clean
 files_clean:

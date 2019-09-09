@@ -15,7 +15,6 @@ CFLAGS = -g -Wall -I$(INCLUDE_DIR)
 
 $(BIN_DIR)/%: $(COMMOM_OBJS) $(OBJ_DIR)/%.o | $(BIN_DIR) $(OBJ_DIR)
 	@$(CC) $^ -o $@
-	@echo "== Build $@ done"
 
 .PRECIOUS: $(COMMOM_OBJ_DIR)/%.o
 $(COMMOM_OBJ_DIR)/%.o : $(COMMOM_SRC_DIR)/%.c | $(COMMOM_OBJ_DIR)
