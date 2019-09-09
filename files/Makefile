@@ -10,9 +10,9 @@ COMMOM_OBJS = $(patsubst $(COMMOM_SRC_DIR)/%.c, $(COMMOM_OBJ_DIR)/%.o, $(COMMON_
 
 SRC_FILES = $(wildcard ./*.c)
 OBJ_FILES = $(patsubst ./%.c, $(OBJ_DIR)/%.o, $(SRC_FILES))
-OBJS_AUX  = $(filter-out $(OBJ_DIR)/t_stat.o, $(OBJ_FILES))
+OBJS_AUX  = $(filter-out $(OBJ_DIR)/t_stat.o $(OBJ_DIR)/t_umask.o, $(OBJ_FILES))
 
-all: $(BIN_DIR)/t_stat
+all: $(BIN_DIR)/t_stat $(BIN_DIR)/t_umask
 
 CC = gcc
 CFLAGS = -g -Wall -I$(INCLUDE_DIR)
