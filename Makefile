@@ -1,8 +1,8 @@
 start: help
 
-all: fileio proc memalloc time syslim sysinfo files
+all: fileio proc memalloc time syslim sysinfo files signals
 all_clean: fileio_clean proc_clean memalloc_clean time_clean \
-           syslim_clean sysinfo_clean files_clean
+           syslim_clean sysinfo_clean files_clean signals_clean
 
 .PHONY: fileio
 fileio:
@@ -67,6 +67,15 @@ files:
 files_clean:
 	@make -C files clean
 
+.PHONY: signals
+signals:
+	@make -C signals
+	@echo "== Build $@ done"
+
+.PHONY: signals_clean
+signals_clean:
+	@make -C signals clean
+
 .PHONY: help
  help:
 	@echo "================================= tlpi lean makefile ======================================================="
@@ -78,7 +87,8 @@ files_clean:
 	@echo "  proc | proc_clean                         Build and clean stuffs for proc"
 	@echo "  memalloc | memalloc_clean                 Build and clean stuffs for memalloc"
 	@echo "  time | time_clean                         Build and clean stuffs for time"
-	@echo "  syslim | syslim_clean                     Build and clean stuffs for time"
-	@echo "  sysinfo | sysinfo_clean                   Build and clean stuffs for time"
-	@echo "  files | files_clean                       Build and clean stuffs for time"
+	@echo "  syslim | syslim_clean                     Build and clean stuffs for syslim"
+	@echo "  sysinfo | sysinfo_clean                   Build and clean stuffs for sysinfo"
+	@echo "  files | files_clean                       Build and clean stuffs for files"
+	@echo "  signals | signals_clean                   Build and clean stuffs for signals"
 	@echo "============================================================================================================"
