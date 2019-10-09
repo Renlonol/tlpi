@@ -7,13 +7,13 @@ OBJ_DIR = ./obj
 
 COMMON_SRC_FILES = $(wildcard $(COMMOM_SRC_DIR)/*.c)
 COMMOM_OBJS = $(patsubst $(COMMOM_SRC_DIR)/%.c, $(COMMOM_OBJ_DIR)/%.o, $(COMMON_SRC_FILES))
-BIN_OBJS = $(OBJ_DIR)/real_timer.o $(OBJ_DIR)/timed_read.o
+BIN_OBJS = $(OBJ_DIR)/real_timer.o $(OBJ_DIR)/timed_read.o $(OBJ_DIR)/t_nanosleep.o
 
 SRC_FILES = $(wildcard ./*.c)
 OBJ_FILES = $(patsubst ./%.c, $(OBJ_DIR)/%.o, $(SRC_FILES))
 OBJS_AUX  = $(filter-out $(BIN_OBJS), $(OBJ_FILES))
 
-all: $(BIN_DIR)/real_timer $(BIN_DIR)/timed_read
+all: $(BIN_DIR)/real_timer $(BIN_DIR)/timed_read $(BIN_DIR)/t_nanosleep 
 
 CC = gcc
 CFLAGS = -g -Wall -I$(INCLUDE_DIR)
