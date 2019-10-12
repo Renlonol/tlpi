@@ -43,12 +43,12 @@ int main(int argc, char *argv[])
 
         if (s == 0)
             break;
-        
+
         printf("Remaining: %2ld.%09ld\n", (long) remain.tv_sec, remain.tv_nsec);
 
         request = remain;
     }
 
-    printf("slepp complete\n");    
+    printf("slepp complete\n");
     return 0;
 }

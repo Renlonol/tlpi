@@ -7,19 +7,22 @@ OBJ_DIR = ./obj
 
 COMMON_SRC_FILES = $(wildcard $(COMMOM_SRC_DIR)/*.c)
 COMMOM_OBJS = $(patsubst $(COMMOM_SRC_DIR)/%.c, $(COMMOM_OBJ_DIR)/%.o, $(COMMON_SRC_FILES))
-BIN_OBJS = $(OBJ_DIR)/real_timer.o $(OBJ_DIR)/timed_read.o $(OBJ_DIR)/t_nanosleep.o
+BIN_OBJS = $(OBJ_DIR)/real_timer.o $(OBJ_DIR)/timed_read.o $(OBJ_DIR)/t_nanosleep.o $(OBJ_DIR)/ptmr_sigev_signal.o
 
 SRC_FILES = $(wildcard ./*.c)
 OBJ_FILES = $(patsubst ./%.c, $(OBJ_DIR)/%.o, $(SRC_FILES))
 OBJS_AUX  = $(filter-out $(BIN_OBJS), $(OBJ_FILES))
 
-all: $(BIN_DIR)/real_timer $(BIN_DIR)/timed_read $(BIN_DIR)/t_nanosleep 
+all: $(BIN_DIR)/real_timer $(BIN_DIR)/timed_read $(BIN_DIR)/t_nanosleep $(BIN_DIR)/ptmr_sigev_signal
 
 CC = gcc
 CFLAGS = -g -Wall -I$(INCLUDE_DIR)
+LIBRARY = rt
+
+LIBS += $(LIBRARY:%=-l%)
 
 $(BIN_DIR)/%: $(COMMOM_OBJS) $(OBJ_DIR)/%.o $(OBJS_AUX) | $(BIN_DIR) $(OBJ_DIR)
-	@$(CC) $^ -o $@
+	@$(CC) $^ -o $@ $(LIBS)
 
 .PRECIOUS: $(COMMOM_OBJ_DIR)/%.o
 $(COMMOM_OBJ_DIR)/%.o : $(COMMOM_SRC_DIR)/%.c | $(COMMOM_OBJ_DIR)
