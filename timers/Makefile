@@ -20,7 +20,7 @@ $(BIN_DIR)/ptmr_sigev_signal $(BIN_DIR)/ptmr_sigev_thread $(BIN_DIR)/demo_timerf
 
 CC = gcc
 CFLAGS = -g -Wall -I$(INCLUDE_DIR)
-LIBRARY = rt
+LIBRARY = rt pthread
 
 LIBS += $(LIBRARY:%=-l%)
 

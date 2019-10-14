@@ -1,7 +1,7 @@
 start: help
 
 all: fileio proc memalloc time syslim sysinfo files signals timers
-all_clean: fileio_clean proc_clean memalloc_clean time_clean \
+clean-all: fileio_clean proc_clean memalloc_clean time_clean \
            syslim_clean sysinfo_clean files_clean signals_clean \
 		   timers_clean
 
@@ -93,7 +93,7 @@ timers_clean:
 	@echo " Usage:"
 	@echo "  make [help] | [<target>]"
 	@echo "  help                                      Help from this Makefile contains only help for generic targets"
-	@echo "  all | all_clean                           Build and clean all stuffs bins"
+	@echo "  all | clean-all                           Build and clean all stuffs bins"
 	@echo "  fileio | fileio_clean                     Build and clean stuffs for fileio"
 	@echo "  proc | proc_clean                         Build and clean stuffs for proc"
 	@echo "  memalloc | memalloc_clean                 Build and clean stuffs for memalloc"
