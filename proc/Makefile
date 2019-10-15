@@ -9,7 +9,7 @@ COMMON_SRC_FILES = $(wildcard $(COMMOM_SRC_DIR)/*.c)
 COMMOM_OBJS = $(patsubst $(COMMOM_SRC_DIR)/%.c, $(COMMOM_OBJ_DIR)/%.o, $(COMMON_SRC_FILES))
 
 all: $(BIN_DIR)/display_env $(BIN_DIR)/modify_env $(BIN_DIR)/longjmp $(BIN_DIR)/fork_sig_sync \
-		$(BIN_DIR)/exit_handlers $(BIN_DIR)/fork_stdio_buf
+		$(BIN_DIR)/exit_handlers $(BIN_DIR)/fork_stdio_buf $(BIN_DIR)/multi_wait
 
 CC = gcc
 CFLAGS = -g -Wall -I$(INCLUDE_DIR)
