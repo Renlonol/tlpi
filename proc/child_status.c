@@ -24,20 +24,22 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
 
     default:
-        childPid = waitpid(-1, &status, WUNTRACED
-#ifdef WCONTIUED
-                                                | WCONTIUED
-#endif
-                );
-        if (childPid == -1)
-            errExit("waitpid");
-        
-        printf("waitpid() returned: PID=%ld, status=0x%04x (%d,%d)\n",
-                (long) childPid, (unsigned int)status, status >> 8, status & 0xff);
-        
-        printWaitStatus(NULL, status);
+        for (;;) {
+            childPid = waitpid(-1, &status, WUNTRACED
+    #ifdef WCONTIUED
+                                                    | WCONTIUED
+    #endif
+                    );
+            if (childPid == -1)
+                errExit("waitpid");
 
-        if (WIFEXITED(status) || WIFSIGNALED(status))
-            exit(EXIT_SUCCESS);
+            printf("waitpid() returned: PID=%ld, status=0x%04x (%d,%d)\n",
+                    (long) childPid, (unsigned int)status, status >> 8, status & 0xff);
+
+            printWaitStatus(NULL, status);
+
+            if (WIFEXITED(status) || WIFSIGNALED(status))
+                exit(EXIT_SUCCESS);
+        }
     }
 }
