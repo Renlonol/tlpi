@@ -1,9 +1,10 @@
 start: help
 
-all: fileio proc memalloc time syslim sysinfo files signals timers
+all: fileio proc memalloc time syslim sysinfo files signals timers \
+		threads
 clean-all: fileio_clean proc_clean memalloc_clean time_clean \
            syslim_clean sysinfo_clean files_clean signals_clean \
-		   timers_clean
+		   timers_clean threads_clean
 
 .PHONY: fileio
 fileio:
@@ -86,6 +87,14 @@ timers:
 timers_clean:
 	@make -C timers clean
 
+.PHONY: threads
+threads:
+	@make -C threads
+	@echo "== Build $@ done"
+
+.PHONY: threads_clean
+threads_clean:
+	@make -C threads clean
 
 .PHONY: help
  help:
@@ -103,4 +112,5 @@ timers_clean:
 	@echo "  files | files_clean                       Build and clean stuffs for files"
 	@echo "  signals | signals_clean                   Build and clean stuffs for signals"
 	@echo "  timers | timers_clean                     Build and clean stuffs for timers"
+	@echo "  threads | threads_clean                   Build and clean stuffs for threads"
 	@echo "============================================================================================================"
