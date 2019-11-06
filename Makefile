@@ -122,5 +122,5 @@ ipc_clean:
 	@echo "  signals | signals_clean                   Build and clean stuffs for signals"
 	@echo "  timers | timers_clean                     Build and clean stuffs for timers"
 	@echo "  threads | threads_clean                   Build and clean stuffs for threads"
-	@echo "  ipc | ipc_clean                   		   Build and clean stuffs for ipc"
+	@echo "  ipc | ipc_clean                           Build and clean stuffs for ipc"
 	@echo "============================================================================================================"
