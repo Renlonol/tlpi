@@ -9,7 +9,8 @@ COMMON_SRC_FILES = $(wildcard $(COMMOM_SRC_DIR)/*.c)
 COMMOM_OBJS = $(patsubst $(COMMOM_SRC_DIR)/%.c, $(COMMOM_OBJ_DIR)/%.o, $(COMMON_SRC_FILES))
 BIN_OBJS = $(OBJ_DIR)/simple_pipe.o $(OBJ_DIR)/pipe_sync.o $(OBJ_DIR)/pipe_ls_wc.o \
 			$(OBJ_DIR)/fifo_seqnum_server.o $(OBJ_DIR)/fifo_seqnum_client.o \
-			$(OBJ_DIR)/mmcat.o $(OBJ_DIR)/t_mmap.o $(OBJ_DIR)/anon_mmap.o
+			$(OBJ_DIR)/mmcat.o $(OBJ_DIR)/t_mmap.o $(OBJ_DIR)/anon_mmap.o $(OBJ_DIR)/pmsg_create.o \
+			$(OBJ_DIR)/pmsg_getattr.o $(OBJ_DIR)/pmsg_unlink.o $(OBJ_DIR)/pmsg_send.o $(OBJ_DIR)/pmsg_receive.o
 
 SRC_FILES = $(wildcard ./*.c)
 OBJ_FILES = $(patsubst ./%.c, $(OBJ_DIR)/%.o, $(SRC_FILES))
@@ -17,11 +18,12 @@ OBJS_AUX  = $(filter-out $(BIN_OBJS), $(OBJ_FILES))
 
 all: $(BIN_DIR)/simple_pipe $(BIN_DIR)/pipe_sync $(BIN_DIR)/pipe_ls_wc \
 		$(BIN_DIR)/fifo_seqnum_client $(BIN_DIR)/fifo_seqnum_server \
-		$(BIN_DIR)/mmcat $(BIN_DIR)/t_mmap $(BIN_DIR)/anon_mmap
+		$(BIN_DIR)/mmcat $(BIN_DIR)/t_mmap $(BIN_DIR)/anon_mmap $(BIN_DIR)/pmsg_create \
+		$(BIN_DIR)/pmsg_getattr $(BIN_DIR)/pmsg_unlink $(BIN_DIR)/pmsg_send $(BIN_DIR)/pmsg_receive
 
 CC = gcc
 CFLAGS = -g -Wall -I$(INCLUDE_DIR)
-LIBRARY =
+LIBRARY = rt
 
 LIBS += $(LIBRARY:%=-l%)
 
