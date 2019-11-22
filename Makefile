@@ -8,7 +8,7 @@ clean-all: fileio_clean proc_clean memalloc_clean time_clean \
 
 .PHONY: fileio
 fileio:
-	@make -C fileio
+	@make -C fileio -j
 	@echo "== Build $@ done"
 
 .PHONY: fileio_clean
@@ -17,7 +17,7 @@ fileio_clean:
 
 .PHONY: proc
 proc:
-	@make -C proc
+	@make -C proc -j
 	@echo "== Build $@ done"
 
 .PHONY: proc_clean
@@ -26,7 +26,7 @@ proc_clean:
 
 .PHONY: memalloc
 memalloc:
-	@make -C memalloc
+	@make -C memalloc -j
 	@echo "== Build $@ done"
 
 .PHONY: memalloc_clean
@@ -35,7 +35,7 @@ memalloc_clean:
 
 .PHONY: time
 time:
-	@make -C time
+	@make -C time -j
 	@echo "== Build $@ done"
 
 .PHONY: time_clean
@@ -44,7 +44,7 @@ time_clean:
 
 .PHONY: syslim
 syslim:
-	@make -C syslim
+	@make -C syslim -j
 	@echo "== Build $@ done"
 
 .PHONY: syslim_clean
@@ -53,7 +53,7 @@ syslim_clean:
 
 .PHONY: sysinfo
 sysinfo:
-	@make -C sysinfo
+	@make -C sysinfo -j
 	@echo "== Build $@ done"
 
 .PHONY: sysinfo_clean
@@ -62,7 +62,7 @@ sysinfo_clean:
 
 .PHONY: files
 files:
-	@make -C files
+	@make -C files -j
 	@echo "== Build $@ done"
 
 .PHONY: files_clean
@@ -71,7 +71,7 @@ files_clean:
 
 .PHONY: signals
 signals:
-	@make -C signals
+	@make -C signals -j
 	@echo "== Build $@ done"
 
 .PHONY: signals_clean
@@ -80,7 +80,7 @@ signals_clean:
 
 .PHONY: timers
 timers:
-	@make -C timers
+	@make -C timers -j
 	@echo "== Build $@ done"
 
 .PHONY: timers_clean
@@ -89,7 +89,7 @@ timers_clean:
 
 .PHONY: threads
 threads:
-	@make -C threads
+	@make -C threads -j
 	@echo "== Build $@ done"
 
 .PHONY: threads_clean
@@ -98,7 +98,7 @@ threads_clean:
 
 .PHONY: ipc
 ipc:
-	@make -C ipc
+	@make -C ipc -j
 	@echo "== Build $@ done"
 
 .PHONY: ipc_clean
