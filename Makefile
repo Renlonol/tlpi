@@ -1,10 +1,10 @@
 start: help
 
 all: fileio proc memalloc time syslim sysinfo files signals timers \
-		threads ipc
+		threads ipc sockets
 clean-all: fileio_clean proc_clean memalloc_clean time_clean \
            syslim_clean sysinfo_clean files_clean signals_clean \
-		   timers_clean threads_clean ipc_clean
+		   timers_clean threads_clean ipc_clean sockets_clean
 
 .PHONY: fileio
 fileio:
@@ -105,6 +105,15 @@ ipc:
 ipc_clean:
 	@make -C ipc clean
 
+.PHONY: sockets
+sockets:
+	@make -C sockets -j
+	@echo "== Build $@ done"
+
+.PHONY: sockets_clean
+sockets_clean:
+	@make -C sockets clean
+
 .PHONY: help
  help:
 	@echo "================================= tlpi lean makefile ======================================================="
@@ -123,4 +132,5 @@ ipc_clean:
 	@echo "  timers | timers_clean                     Build and clean stuffs for timers"
 	@echo "  threads | threads_clean                   Build and clean stuffs for threads"
 	@echo "  ipc | ipc_clean                           Build and clean stuffs for ipc"
+	@echo "  sockets | sockets_clean                   Build and clean stuffs for sockets"
 	@echo "============================================================================================================"
