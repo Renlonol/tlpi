@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
         if (rsp.stat == RECEIVE_FAILED)
             printf("sv receive not ok\n");
         else
-            printf("sv receive ok\n");;
+            printf("sv receive ok\n");
     }
 
     if (numRead == -1)
