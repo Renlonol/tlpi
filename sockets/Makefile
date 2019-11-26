@@ -7,13 +7,13 @@ OBJ_DIR = ./obj
 
 COMMON_SRC_FILES = $(wildcard $(COMMOM_SRC_DIR)/*.c)
 COMMOM_OBJS = $(patsubst $(COMMOM_SRC_DIR)/%.c, $(COMMOM_OBJ_DIR)/%.o, $(COMMON_SRC_FILES))
-BIN_OBJS = $(OBJ_DIR)/us_xfr_sv.o $(OBJ_DIR)/us_xfr_cl.o
+BIN_OBJS = $(OBJ_DIR)/us_xfr_sv.o $(OBJ_DIR)/us_xfr_cl.o $(OBJ_DIR)/ud_ucase_sv.o $(OBJ_DIR)/ud_ucase_cl.o
 
 SRC_FILES = $(wildcard ./*.c)
 OBJ_FILES = $(patsubst ./%.c, $(OBJ_DIR)/%.o, $(SRC_FILES))
 OBJS_AUX  = $(filter-out $(BIN_OBJS), $(OBJ_FILES))
 
-all: $(BIN_DIR)/us_xfr_sv $(BIN_DIR)/us_xfr_cl
+all: $(BIN_DIR)/us_xfr_sv $(BIN_DIR)/us_xfr_cl $(BIN_DIR)/ud_ucase_sv $(BIN_DIR)/ud_ucase_cl
 
 CC = gcc
 CFLAGS = -g -Wall -I$(INCLUDE_DIR)
