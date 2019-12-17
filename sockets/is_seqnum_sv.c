@@ -79,6 +79,7 @@ int main(int argc, char *argv[])
         else
             snprintf(addrStr, ADDRSTRLEN, "(?UNKNOWN?)");
 
+        printf("Connection from %s\n", addrStr);
 
         if (readLine(cfd, reqLenStr, INT_LEN) <= 0) {
             close(cfd);
