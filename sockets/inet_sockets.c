@@ -1,6 +1,6 @@
-/* 
+/*
 * To get definitions of NI_MAXHOST
-* and NI_MAXSERV from netdb.h 
+* and NI_MAXSERV from netdb.h
 */
 #define _DEFAULT_SOURCE
 #include <sys/socket.h>
@@ -34,10 +34,10 @@ int inetConnect(const char *host, const char *service, int type)
         sfd = socket(rp->ai_family, rp->ai_socktype, rp->ai_protocol);
         if (sfd == -1)
             continue;
-        
-        if (connect(sfd, rp->ai_addr, rp->ai_addrlen) == -1)
+
+        if (connect(sfd, rp->ai_addr, rp->ai_addrlen) != -1)
             break;
-        
+
         close(sfd);
     }
 
@@ -86,7 +86,7 @@ static int inetPassiveSocket(const char *service, int type, socklen_t *addrlen,
 
         if (bind(sfd, rp->ai_addr, rp->ai_addrlen) == 0)
             break;
-        
+
         close(sfd);
     }
 
