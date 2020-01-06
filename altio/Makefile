@@ -7,13 +7,13 @@ OBJ_DIR = ./obj
 
 COMMON_SRC_FILES = $(wildcard $(COMMOM_SRC_DIR)/*.c)
 COMMOM_OBJS = $(patsubst $(COMMOM_SRC_DIR)/%.c, $(COMMOM_OBJ_DIR)/%.o, $(COMMON_SRC_FILES))
-BIN_OBJS = $(OBJ_DIR)/t_select.o $(OBJ_DIR)/poll_pipes.o
+BIN_OBJS = $(OBJ_DIR)/t_select.o $(OBJ_DIR)/poll_pipes.o $(OBJ_DIR)/epoll_input.o
 
 SRC_FILES = $(wildcard ./*.c)
 OBJ_FILES = $(patsubst ./%.c, $(OBJ_DIR)/%.o, $(SRC_FILES))
 OBJS_AUX  = $(filter-out $(BIN_OBJS), $(OBJ_FILES))
 
-all: $(BIN_DIR)/t_select $(BIN_DIR)/poll_pipes
+all: $(BIN_DIR)/t_select $(BIN_DIR)/poll_pipes $(BIN_DIR)/epoll_input
 
 CC = gcc
 CFLAGS = -g -Wall -I$(INCLUDE_DIR)
