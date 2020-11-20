@@ -27,11 +27,10 @@ static void handleRequest(int cfd)
             syslog(LOG_ERR, "write() failed: %s", strerror(errno));
             exit(EXIT_FAILURE);
         }
-
-        if (numRead == -1) {
-            syslog(LOG_ERR, "read() failed: %s", strerror(errno));
-            exit(EXIT_FAILURE);
-        }
+    }
+    if (numRead == -1) {
+        syslog(LOG_ERR, "read() failed: %s", strerror(errno));
+        exit(EXIT_FAILURE);
     }
 }
 
