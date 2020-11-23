@@ -1,6 +1,11 @@
 #include "inet_sockets.h"
 #include "tlpi_hdr.h"
 
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <sys/socket.h>
+#include <ctype.h>
+
 #define TCP_ECHO_PORT 35007
 #define UDP_ECHO_PORT 45007
 #define BUF_SIZE 500
