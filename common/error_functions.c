@@ -55,7 +55,7 @@ outputError(Boolean useErr, int err, Boolean flushStdout,
         const char *format, va_list ap)
 {
     #define BUF_SIZE 500
-    char buf[BUF_SIZE], userMsg[BUF_SIZE], errText[BUF_SIZE];
+    char buf[BUF_SIZE*3], userMsg[BUF_SIZE], errText[BUF_SIZE];
 
     vsnprintf(userMsg, BUF_SIZE, format, ap);
 
@@ -66,7 +66,7 @@ outputError(Boolean useErr, int err, Boolean flushStdout,
     else
         snprintf(errText, BUF_SIZE, ":");
 
-    snprintf(buf, BUF_SIZE, "ERROR%s %s\n", errText, userMsg);
+    snprintf(buf, sizeof(buf), "ERROR%s %s\n", errText, userMsg);
 
     if (flushStdout)
         fflush(stdout);       /* Flush any pending stdout */
